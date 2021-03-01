@@ -15,6 +15,7 @@ new_players = []
 new_player_guardians = []
 experienced_players = []
 experienced_players_guardians = []
+divider = print("-"*10)
 
 #teams holds three lists of teams with their 'drafted' players. team_height holds their heights, team_guardians holds their guardians.
 
@@ -32,13 +33,13 @@ def balance_teams():
       i['name'] = "*" + i['name']
       experienced_players.append(i['name'])
       i['guardians'] = i['name'] + "'s guardian(s): " + i['guardians'].replace("and", "" )
-      experienced_players_guardians.append(i['guardians'])
+      experienced_players_guardians.append([i['guardians']])
       
       
     elif i['experience'] == 'NO':
       new_players.append(i['name'])
       i['guardians'] = i['name'] + "'s guardian(s): " + i['guardians'].replace("and", "" )
-      new_player_guardians.append(i['guardians'])
+      new_player_guardians.append([i['guardians']])
   team_list = len(teams)
   for j in new_players:
       teams[counter % team_list].append(j)
@@ -54,8 +55,7 @@ def balance_teams():
       
   for g in experienced_players_guardians:
       team_guardians[counter % team_list].append(g)
-      counter+= 1      
-      
+      counter+= 1
 #takes average height of each team and converts to feet, rounds to the next inch
 def get_average_height():
   counter = 0
@@ -101,8 +101,11 @@ def get_guardians():
 
 #Introduction
 def intro():
+  divider
   print("BASKETBALL TEAM STATS TOOL")
+  divider
   print("Enter A to navigate through the team stats or B to quit: \n A) Display Team Stats \n B) Quit")
+  divider
 
 #simple parting message after the user ends the program
 def terminate():
@@ -153,7 +156,6 @@ if __name__ == "__main__":
   panthers_height, bandits_height, warriors_height = get_average_height()
   get_guardians()
   panthers_guardians, bandits_guardians, warriors_guardians = get_guardians()
-  get_average_height()
   intro()
   start()
 
