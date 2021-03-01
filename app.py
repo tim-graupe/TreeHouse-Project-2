@@ -7,7 +7,6 @@ teams = constants.TEAMS
 players = constants.PLAYERS
 num_of_players = len(players) / len(teams)
 
-#Converting dictionaries
 #updated_players list holds the cleaned version of the constants dictionary. new_players and experienced_players holds lists of players and their respective XP. same for the guardians lists.
 
 updated_players = []
@@ -15,7 +14,6 @@ new_players = []
 new_player_guardians = []
 experienced_players = []
 experienced_players_guardians = []
-divider = print("-"*10)
 
 #teams holds three lists of teams with their 'drafted' players. team_height holds their heights, team_guardians holds their guardians.
 
@@ -101,11 +99,8 @@ def get_guardians():
 
 #Introduction
 def intro():
-  divider
   print("BASKETBALL TEAM STATS TOOL")
-  divider
   print("Enter A to navigate through the team stats or B to quit: \n A) Display Team Stats \n B) Quit")
-  divider
 
 #simple parting message after the user ends the program
 def terminate():
