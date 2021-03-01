@@ -153,6 +153,7 @@ if __name__ == "__main__":
   panthers_height, bandits_height, warriors_height = get_average_height()
   get_guardians()
   panthers_guardians, bandits_guardians, warriors_guardians = get_guardians()
+  get_average_height()
   intro()
   start()
 
