@@ -31,24 +31,14 @@ def balance_teams():
     if i['experience'] == 'YES':
       i['name'] = "*" + i['name']
       experienced_players.append(i['name'])
-<<<<<<< Updated upstream
-      i['guardians'] = i['name'] + "'s guardian(s): " + i['guardians'].replace("and", "" )
-      experienced_players_guardians.append([i['guardians']])
-=======
       i['guardians'] = i['guardians'].replace("and", "" )
       experienced_players_guardians.append(i['guardians'])
->>>>>>> Stashed changes
       
       
     elif i['experience'] == 'NO':
       new_players.append(i['name'])
-<<<<<<< Updated upstream
-      i['guardians'] = i['name'] + "'s guardian(s): " + i['guardians'].replace("and", "" )
-      new_player_guardians.append([i['guardians']])
-=======
       i['guardians'] = i['guardians'].replace("and", "" )
       new_player_guardians.append(i['guardians'])
->>>>>>> Stashed changes
   team_list = len(teams)
   for j in new_players:
       teams[counter % team_list].append(j)
