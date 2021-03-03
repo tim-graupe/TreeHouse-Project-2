@@ -1,10 +1,11 @@
 import constants
+import copy
 from decimal import Decimal
 
 #Creates new copies of the dictionaries
 
-teams = constants.TEAMS
-players = constants.PLAYERS
+teams = copy.deepcopy(constants.TEAMS)
+players = copy.deepcopy(constants.PLAYERS)
 num_of_players = len(players) / len(teams)
 
 #updated_players list holds the cleaned version of the constants dictionary. new_players and experienced_players holds lists of players and their respective XP. same for the guardians lists.
@@ -30,14 +31,24 @@ def balance_teams():
     if i['experience'] == 'YES':
       i['name'] = "*" + i['name']
       experienced_players.append(i['name'])
+<<<<<<< Updated upstream
       i['guardians'] = i['name'] + "'s guardian(s): " + i['guardians'].replace("and", "" )
       experienced_players_guardians.append([i['guardians']])
+=======
+      i['guardians'] = i['guardians'].replace("and", "" )
+      experienced_players_guardians.append(i['guardians'])
+>>>>>>> Stashed changes
       
       
     elif i['experience'] == 'NO':
       new_players.append(i['name'])
+<<<<<<< Updated upstream
       i['guardians'] = i['name'] + "'s guardian(s): " + i['guardians'].replace("and", "" )
       new_player_guardians.append([i['guardians']])
+=======
+      i['guardians'] = i['guardians'].replace("and", "" )
+      new_player_guardians.append(i['guardians'])
+>>>>>>> Stashed changes
   team_list = len(teams)
   for j in new_players:
       teams[counter % team_list].append(j)
@@ -74,12 +85,12 @@ def clean_data():
   for player in players:
     if len(player['height']) > 2 and player['experience'] == 'YES':
       player['height'] = int(player['height'][0:2])
-      player['experience'] = 'True'
+      player['experience'] = True
       updated_players.append(player)
       
     elif len(player['height']) > 2 and player['experience'] == 'NO':
       player['height'] = int(player['height'][0:2])
-      player['experience'] = 'False'
+      player['experience'] = False
       updated_players.append(player)
       
     if "and" in player['guardians']:
@@ -129,13 +140,13 @@ def start():
         second_choice = str(input("\n Select a team to view their stats or enter X to quit.  \n TEAMS: \n A) Panthers \n B) Bandits \n C) Warriors \n").upper())
         
         if second_choice == "A":
-          print(f"Roster for the Panthers: \n  \n An * indicates a veteran player \n  \n {', '.join(teams[0])} \n  \n Total players on the Panthers: {len(teams[0])} \n  \n Average team height: {panthers_height}\' \n  \n {panthers_guardians} \n") 
+          print(f"Roster for the Panthers: \n  \n An * indicates a veteran player \n  \n {', '.join(teams[0])} \n  \n Total players on the Panthers: {len(teams[0])} \n  \n Average team height: {panthers_height}\' \n  \n Guardians: {', '.join(team_guardians[0])} \n") 
 
         elif second_choice == "B":
-          print(f"\n Roster for the Bandits: \n  \n An * indicates a veteran player \n  \n {', '.join(teams[1])} \n  \n Total players on the Bandits: {len(teams[1])} \n  \n Average team height: {bandits_height}\' \n  \n {bandits_guardians} \n")
+          print(f"\n Roster for the Bandits: \n  \n An * indicates a veteran player \n  \n {', '.join(teams[1])} \n  \n Total players on the Bandits: {len(teams[1])} \n  \n Average team height: {bandits_height}\' \n  \n Guardians: {', '.join(team_guardians[1])} \n")
 
         elif second_choice == "C":
-          print(f"Roster for the Warriors: \n  \n An * indicates a veteran player \n  \n {', '.join(teams[2])} \n  \n Total players on the Warriors: {len(teams[2])} \n  \n Average team height: {warriors_height}\' \n  \n {warriors_guardians}")
+          print(f"Roster for the Warriors: \n  \n An * indicates a veteran player \n  \n {', '.join(teams[2])} \n  \n Total players on the Warriors: {len(teams[2])} \n  \n Average team height: {warriors_height}\' \n  \n Guardians: {', '.join(team_guardians[2])}")
 
         elif second_choice == "X":
           terminate()
@@ -153,5 +164,3 @@ if __name__ == "__main__":
   panthers_guardians, bandits_guardians, warriors_guardians = get_guardians()
   intro()
   start()
-
-
